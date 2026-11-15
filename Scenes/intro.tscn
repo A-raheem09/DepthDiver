@@ -23,9 +23,9 @@ color = Color(0, 0, 0, 1)
 
 [node name="TextHolder" type="NinePatchRect" parent="." unique_id=380909260]
 layout_mode = 1
-offset_left = -289.0
+offset_left = -337.0
 offset_top = -52.0
-offset_right = 281.0
+offset_right = 323.0
 offset_bottom = 34.0
 texture = ExtResource("2_alxvg")
 patch_margin_left = 4

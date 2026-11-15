@@ -13,7 +13,6 @@ func on_pressed():
 	if Global.stats["points"] >= cost:
 		Global.stats["points"] -= cost
 		Global.stats[upgrade_number] += 1
-	Global._save()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

@@ -25,4 +25,3 @@ func on_pressed():
 		Global.stats[upgrade_number] += 1
 		Global.stats[stat_to_change] += amt_to_change
 		cost = initial_cost * max(cost_scaling * Global.stats[upgrade_number],1)
-	Global._save()

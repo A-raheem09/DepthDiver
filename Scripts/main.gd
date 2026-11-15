@@ -8,10 +8,10 @@ const spawn = Vector2(132,24)
 @onready var depth = $CanvasLayer/depth_holder/depth
 @onready var shop_button = $CanvasLayer/shop
 @onready var respawning = false
-
+@onready var god = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if Global.stats[2] >= 1:
+	if Global.stats[2] >= 1 or god:
 		Global.bouncevision = true
 	diver.respawn()
 	pass # Replace with function body.
@@ -26,9 +26,13 @@ func _process(_delta: float) -> void:
 	Global.depth = int(diver.position.y - 23)/10
 	depth.text = "Depth: " + str(Global.depth)
 	points.text = "Points: " + str(Global.stats['points'])
-	if not diver.is_on_floor() and fall_timer.is_stopped():
+	if not diver.is_on_floor() and fall_timer.is_stopped() and not god:
 		fall_timer.start(0.1)
+		$diver/fallsfx.play()
 	if diver.is_on_floor():
+		if not fall_timer.is_stopped():
+			$diver/fallsfx.stop()
+			$diver/landsfx.play(3.9)
 		fall_timer.stop()
 		Global.fall_time = 0
 	if Global.fall_time >= Global.stats["freefall"] and not respawning:
@@ -46,8 +50,8 @@ func _process(_delta: float) -> void:
 	else:
 		Global.points_mult = Global.stats['points_mult']
 func respawn():
-	Global._save()
 	diver.death()
+	$diver/deathfx.play()
 	respawning = true
 	await get_tree().create_timer(0.2).timeout
 	$AnimationPlayer.play("Reset")
@@ -78,6 +82,13 @@ func tally():
 		Global.stats['points'] += 1
 		temp_points -= 1
 	else:
-		Global._save()
 		$TallyTimer.stop()
 		$CanvasLayer/Highscore.visible = false
+
+
+func _on_next_area_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+	if body.name == "diver":
+		$AnimationPlayer.play("new_scene")
+		$CanvasLayer/Label.z_index += 1000
+		$CanvasLayer/Label.text = "Wandering into your own demise little puppet? So be it."
+	pass # Replace with function body.

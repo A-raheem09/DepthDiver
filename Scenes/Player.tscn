@@ -455,7 +455,7 @@ shape = SubResource("RectangleShape2D_er3t1")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=814322652]
 z_index = -1
 sprite_frames = SubResource("SpriteFrames_qbkls")
-animation = &"Death"
+animation = &"Respawn"
 autoplay = "default"
 frame = 16
 frame_progress = 1.0
@@ -466,4 +466,5 @@ zoom = Vector2(4.885, 4.885)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=686578601]
 stream = ExtResource("7_52ee3")
+volume_db = -15.0
 autoplay = true
