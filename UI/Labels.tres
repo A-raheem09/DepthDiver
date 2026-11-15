@@ -1,0 +1,9 @@
+[gd_resource type="Theme" format=3 uid="uid://s2as1w006s04"]
+
+[ext_resource type="FontFile" uid="uid://dy886rosnc5ux" path="res://Assets/Fonts/Stepalange-x3BLm.otf" id="1_hpbf6"]
+
+[resource]
+Label/font_sizes/font_size = 26
+Label/fonts/font = ExtResource("1_hpbf6")
+RichTextLabel/fonts/bold_font = ExtResource("1_hpbf6")
+RichTextLabel/fonts/normal_font = ExtResource("1_hpbf6")

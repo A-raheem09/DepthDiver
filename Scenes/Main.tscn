@@ -3,12 +3,19 @@
 [ext_resource type="Script" uid="uid://c650i0686lts5" path="res://Scripts/main.gd" id="1_kln2b"]
 [ext_resource type="Texture2D" uid="uid://dlacbc0gry0o1" path="res://Assets/Textures/Tilemap1.png" id="2_idj7w"]
 [ext_resource type="PackedScene" uid="uid://xkhljtu5co7t" path="res://Scenes/Player.tscn" id="2_kln2b"]
+[ext_resource type="Texture2D" uid="uid://4abge4elwmu6" path="res://Assets/Textures/Tilemap2.png" id="4_h1m7h"]
 [ext_resource type="FontFile" uid="uid://dy886rosnc5ux" path="res://Assets/Fonts/Stepalange-x3BLm.otf" id="4_rgh2o"]
 [ext_resource type="Theme" uid="uid://dhca8ffw8gdbx" path="res://UI/Button_theme.tres" id="4_v1gob"]
 [ext_resource type="Script" uid="uid://bu5q3qylvcy4q" path="res://Scripts/shop.gd" id="6_50glp"]
 [ext_resource type="Texture2D" uid="uid://5hknnnqr1oxf" path="res://Assets/Textures/Template.jpeg" id="6_jw32o"]
 [ext_resource type="Texture2D" uid="uid://jcvp5hxvtqdp" path="res://Assets/Textures/TemplatePressed.jpeg" id="8_50glp"]
 [ext_resource type="Script" uid="uid://rux4x00p0yg2" path="res://Scripts/upgradebutton.gd" id="9_vy5pj"]
+[ext_resource type="Theme" uid="uid://s2as1w006s04" path="res://UI/Labels.tres" id="10_bmxlf"]
+[ext_resource type="Texture2D" uid="uid://bpvbyl83l4rul" path="res://Assets/Textures/BGT1.png" id="11_4kpch"]
+[ext_resource type="Script" uid="uid://fl4dpe7wmn3a" path="res://Scripts/upg_3.gd" id="11_frkhe"]
+[ext_resource type="Texture2D" uid="uid://twtey3d8dits" path="res://Assets/Textures/BG2T1.png" id="12_grg3l"]
+[ext_resource type="PackedScene" uid="uid://c5kseifahwfe1" path="res://Scenes/Bounce.tscn" id="14_1p5hy"]
+[ext_resource type="Texture2D" uid="uid://b5s5gft7fd4qo" path="res://Assets/Textures/T2BG1.png" id="16_erwvk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kln2b"]
 texture = ExtResource("2_idj7w")
@@ -52,15 +59,44 @@ texture = ExtResource("2_idj7w")
 3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 4:3/0 = 0
 4:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+0:5/0 = 0
+2:5/0 = 0
+4:5/0 = 0
+4:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_erwvk"]
+texture = ExtResource("4_h1m7h")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSet" id="TileSet_dewec"]
 physics_layer_0/collision_layer = 1
+physics_layer_1/collision_layer = 4
 sources/0 = SubResource("TileSetAtlasSource_kln2b")
-
-[sub_resource type="Theme" id="Theme_vy5pj"]
-Label/fonts/font = ExtResource("4_rgh2o")
-RichTextLabel/fonts/bold_font = ExtResource("4_rgh2o")
-RichTextLabel/fonts/normal_font = ExtResource("4_rgh2o")
+sources/1 = SubResource("TileSetAtlasSource_erwvk")
 
 [sub_resource type="Animation" id="Animation_bmxlf"]
 length = 0.001
@@ -117,18 +153,20 @@ _data = {
 
 [node name="Main" type="Node2D" unique_id=1167096661]
 script = ExtResource("1_kln2b")
+metadata/_edit_lock_ = true
 
 [node name="diver" parent="." unique_id=11883113 instance=ExtResource("2_kln2b")]
-position = Vector2(132, 24)
+position = Vector2(132, 11)
+metadata/_edit_lock_ = true
 
 [node name="fall_timer" type="Timer" parent="diver" unique_id=2058014858]
 
-[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=867806087]
-tile_map_data = PackedByteArray("AAAAAAAAAAADAAEAAAAAAAEAAAADAAEAAAAAAAIAAAADAAEAAAAAAAMAAAADAAEAAAAAAAQAAAADAAEAAAAAAAUAAAADAAEAAAAAAAYAAAADAAEAAAAAAAcAAAADAAEAAAAAAAgAAAADAAEAAAAAAAkAAAADAAEAAAAAAAoAAAADAAEAAAAAAAsAAAADAAEAAAAAAAwAAAADAAEAAAAAAA0AAAADAAEAAAAAAA4AAAADAAEAAAAAAP//AAADAAEAAAAZAP//AAAAAAEAAAAZAAAAAAAAAAEAAAAZAAEAAAAAAAEAAAAZAAIAAAAAAAEAAAAZAAMAAAAAAAEAAAAZAAQAAAAAAAEAAAAZAAUAAAAAAAEAAAAZAAYAAAAAAAEAAAAZAAcAAAAAAAEAAAAZAAgAAAAAAAEAAAAZAAkAAAAAAAEAAAAZAAoAAAAAAAEAAAAZAAsAAAAAAAEAAAAZAAwAAAAAAAEAAAAZAA0AAAAAAAEAAAAZAA4AAAAAAAEAAAAZAA8AAAAAAAEAAAAAAA8AAAADAAEAAAAFAAIAAAABAAAAAAAGAAIAAAABAAAAAAAHAAIAAAABAAAAAAAEAAIAAAAAAAAAAAAIAAIAAAABAAAAAAAJAAIAAAABAAAAAAALAAIAAAADAAAAAAAFAAMAAAACAAIAAAAGAAMAAAACAAIAAAAHAAMAAAACAAIAAAAIAAMAAAACAAIAAAAJAAMAAAACAAIAAAAKAAMAAAACAAIAAAALAAMAAAADAAIAAAAEAAMAAAAAAAIAAAAKAAIAAAACAAAAAAACAAcAAAAEAAAAAAAMAAcAAAAEAAAAAAAMAAgAAAAEAAIAAAAAABAAAAADAAEAAAAAABEAAAADAAEAAAAAABIAAAADAAEAAAAAABMAAAADAAEAAAAAABQAAAADAAEAAAAAABUAAAADAAEAAAAAABYAAAADAAEAAAAAABcAAAADAAEAAAAAABgAAAADAAEAAAAAABkAAAADAAEAAAAAABoAAAADAAEAAAAAABsAAAADAAEAAAAAABwAAAADAAEAAAAAAB0AAAADAAEAAAAAAB4AAAADAAEAAAAAAB8AAAADAAEAAAAAACAAAAADAAEAAAAAACEAAAADAAEAAAAAACIAAAADAAEAAAAAACMAAAADAAEAAAAAACQAAAADAAEAAAAAACUAAAADAAEAAAAAACYAAAADAAEAAAAAACcAAAADAAEAAAAAACgAAAADAAEAAAAAACkAAAADAAEAAAAAACoAAAADAAEAAAAAACsAAAADAAEAAAAAACwAAAADAAEAAAAAAC0AAAADAAEAAAAAAC4AAAADAAEAAAAAAC8AAAADAAEAAAAAADEAAAADAAEAAAAAADAAAAADAAEAAAAAADIAAAADAAEAAAAAADMAAAADAAEAAAAAADQAAAADAAEAAAAZABAAAAAAAAEAAAAZABEAAAAAAAEAAAAZABIAAAAAAAEAAAAZABMAAAAAAAEAAAAZABQAAAAAAAEAAAAZABUAAAAAAAEAAAAZABYAAAAAAAEAAAAZABcAAAAAAAEAAAAZABgAAAAAAAEAAAAZABkAAAAAAAEAAAAZABoAAAAAAAEAAAAZABsAAAAAAAEAAAAZABwAAAAAAAEAAAAZAB0AAAAAAAEAAAAZAB4AAAAAAAEAAAAZAB8AAAAAAAEAAAAZACAAAAAAAAEAAAAZACEAAAAAAAEAAAAZACIAAAAAAAEAAAAZACMAAAAAAAEAAAAZACQAAAAAAAEAAAAZACUAAAAAAAEAAAAZACYAAAAAAAEAAAAZACcAAAAAAAEAAAAZACgAAAAAAAEAAAAZACkAAAAAAAEAAAAZACoAAAAAAAEAAAAZACsAAAAAAAEAAAAZACwAAAAAAAEAAAAZAC0AAAAAAAEAAAAZAC4AAAAAAAEAAAAZAC8AAAAAAAEAAAAZADAAAAAAAAEAAAAZADEAAAAAAAEAAAAZADIAAAAAAAEAAAAZADMAAAAAAAEAAAAZADQAAAAAAAEAAAAFAA0AAAAAAAAAAAAIAA0AAAADAAAAAAAGAA0AAAABAAAAAAAHAA0AAAABAAAAAAARAAQAAAAAAAAAAAAWAAQAAAADAAAAAAASAAQAAAACAAAAAAATAAQAAAABAAAAAAAUAAQAAAACAAAAAAAVAAQAAAACAAAAAAARAAUAAAAAAAIAAAASAAUAAAACAAIAAAATAAUAAAACAAIAAAAUAAUAAAACAAIAAAAVAAUAAAACAAIAAAAWAAUAAAADAAIAAAACAAgAAAAEAAIAAAASAAwAAAAEAAAAAAASAA0AAAAEAAIAAAAMABMAAAAAAAAAAAANABMAAAADAAAAAAACABYAAAAAAAAAAAAGABYAAAADAAAAAAADABYAAAACAAAAAAAEABYAAAACAAAAAAAFABYAAAABAAAAAAAVABgAAAAEAAAAAAAGACEAAAAAAAAAAAAHACEAAAABAAAAAAAIACEAAAADAAAAAAAAADUAAAADAAEAAAAAADYAAAADAAEAAAAAADcAAAADAAEAAAAAADgAAAADAAEAAAAAADkAAAADAAEAAAAAADoAAAADAAEAAAAAADsAAAADAAEAAAAAADwAAAADAAEAAAAAAD0AAAADAAEAAAAAAD4AAAADAAEAAAAAAD8AAAADAAEAAAAAAEAAAAADAAEAAAAAAEEAAAADAAEAAAAAAEIAAAADAAEAAAAAAEMAAAADAAEAAAAAAEQAAAADAAEAAAAAAEUAAAADAAEAAAAAAEYAAAADAAEAAAAAAEcAAAADAAEAAAAAAEgAAAADAAEAAAAAAEkAAAADAAEAAAAAAEoAAAADAAEAAAAAAEsAAAADAAEAAAAAAEwAAAADAAEAAAAAAE0AAAADAAEAAAAAAE4AAAADAAEAAAAAAE8AAAADAAEAAAAAAFAAAAADAAEAAAAAAFEAAAADAAEAAAAAAFIAAAADAAEAAAAAAFMAAAADAAEAAAAAAFQAAAADAAEAAAAAAFUAAAADAAEAAAAAAFYAAAADAAEAAAAAAFcAAAADAAEAAAAAAFgAAAADAAEAAAAAAFkAAAADAAEAAAAAAFoAAAADAAEAAAAAAFsAAAADAAEAAAAAAFwAAAADAAEAAAAAAF0AAAADAAEAAAAAAF4AAAADAAEAAAAAAF8AAAADAAEAAAAZADUAAAAAAAEAAAAZADYAAAAAAAEAAAAZADcAAAAAAAEAAAAZADgAAAAAAAEAAAAZADkAAAAAAAEAAAAZADoAAAAAAAEAAAAZADsAAAAAAAEAAAAZADwAAAAAAAEAAAAZAD0AAAAAAAEAAAAZAD4AAAAAAAEAAAAZAD8AAAAAAAEAAAAZAEAAAAAAAAEAAAAZAEEAAAAAAAEAAAAZAEIAAAAAAAEAAAAZAEMAAAAAAAEAAAAZAEQAAAAAAAEAAAAZAEUAAAAAAAEAAAAZAEYAAAAAAAEAAAAZAEcAAAAAAAEAAAAZAEgAAAAAAAEAAAAZAEkAAAAAAAEAAAAZAEoAAAAAAAEAAAAZAEsAAAAAAAEAAAAZAEwAAAAAAAEAAAAZAE0AAAAAAAEAAAAZAE4AAAAAAAEAAAAZAE8AAAAAAAEAAAAZAFAAAAAAAAEAAAAZAFEAAAAAAAEAAAAZAFIAAAAAAAEAAAAZAFMAAAAAAAEAAAAZAFQAAAAAAAEAAAAZAFUAAAAAAAEAAAAZAFYAAAAAAAEAAAAZAFcAAAAAAAEAAAAZAFgAAAAAAAEAAAAZAFkAAAAAAAEAAAAZAFoAAAAAAAEAAAAZAFsAAAAAAAEAAAAZAFwAAAAAAAEAAAAZAF0AAAAAAAEAAAAZAF4AAAAAAAEAAAAZAF8AAAAAAAEAAAAOACgAAAAAAAAAAAASACgAAAADAAAAAAAPACgAAAABAAAAAAAQACgAAAACAAAAAAARACgAAAABAAAAAAAFADoAAAAEAAAAAAAVADEAAAAEAAAAAAAEAC0AAAAEAAAAAAAWAEEAAAAEAAAAAAAFAE4AAAAEAAAAAAAMAFQAAAAAAAAAAAANAFQAAAADAAAAAAAWAFkAAAAEAAAAAAAHAF4AAAAAAAAAAAAIAF4AAAADAAAAAAAOADcAAAAEAAAAAAA=")
+[node name="FirstZone" type="TileMapLayer" parent="." unique_id=867806087]
+tile_map_data = PackedByteArray("AAAAAAAAAAADAAEAAAAAAAEAAAADAAEAAAAAAAIAAAADAAEAAAAAAAMAAAADAAEAAAAAAAQAAAADAAEAAAAAAAUAAAADAAEAAAAAAAYAAAADAAEAAAAAAAcAAAADAAEAAAAAAAgAAAADAAEAAAAAAAkAAAADAAEAAAAAAAoAAAADAAEAAAAAAAsAAAADAAEAAAAAAAwAAAADAAEAAAAAAA0AAAADAAEAAAAAAA4AAAADAAEAAAAAAP//AAADAAEAAAAAAA8AAAADAAEAAAAFAAIAAAABAAAAAAAGAAIAAAABAAAAAAAHAAIAAAABAAAAAAAEAAIAAAAAAAAAAAAIAAIAAAABAAAAAAAJAAIAAAABAAAAAAALAAIAAAADAAAAAAAFAAMAAAACAAIAAAAGAAMAAAACAAIAAAAHAAMAAAACAAIAAAAIAAMAAAACAAIAAAAJAAMAAAACAAIAAAAKAAMAAAACAAIAAAALAAMAAAADAAIAAAAEAAMAAAAAAAIAAAAKAAIAAAACAAAAAAAMAAcAAAAEAAAAAAAMAAgAAAAEAAIAAAAAABAAAAADAAEAAAAAABEAAAADAAEAAAAAABIAAAADAAEAAAAAABMAAAADAAEAAAAAABQAAAADAAEAAAAAABUAAAADAAEAAAAAABYAAAADAAEAAAAAABcAAAADAAEAAAAAABgAAAADAAEAAAAAABkAAAADAAEAAAAAABoAAAADAAEAAAAAABsAAAADAAEAAAAAABwAAAADAAEAAAAAAB0AAAADAAEAAAAAAB4AAAADAAEAAAAAAB8AAAADAAEAAAAAACAAAAADAAEAAAAAACEAAAADAAEAAAAAACIAAAADAAEAAAAAACMAAAADAAEAAAAAACQAAAADAAEAAAAAACUAAAADAAEAAAAAACYAAAADAAEAAAAAACcAAAADAAEAAAAAACgAAAADAAEAAAAAACkAAAADAAEAAAAAACoAAAADAAEAAAAAACsAAAADAAEAAAAAACwAAAADAAEAAAAAAC0AAAADAAEAAAAAAC4AAAADAAEAAAAAAC8AAAADAAEAAAAAADEAAAADAAEAAAAAADAAAAADAAEAAAAAADIAAAADAAEAAAAAADMAAAADAAEAAAAAADQAAAADAAEAAAAFAA0AAAAAAAMAAAAIAA0AAAADAAMAAAAGAA0AAAABAAMAAAAHAA0AAAABAAMAAAARAAQAAAAAAAAAAAAWAAQAAAADAAAAAAASAAQAAAACAAAAAAATAAQAAAABAAAAAAAUAAQAAAACAAAAAAAVAAQAAAACAAAAAAARAAUAAAAAAAIAAAASAAUAAAACAAIAAAATAAUAAAACAAIAAAAUAAUAAAACAAIAAAAVAAUAAAACAAIAAAAWAAUAAAADAAIAAAASAAwAAAAEAAAAAAASAA0AAAAEAAIAAAAMABMAAAAAAAMAAAANABMAAAADAAMAAAACABYAAAAAAAMAAAAGABYAAAADAAMAAAADABYAAAACAAMAAAAEABYAAAACAAMAAAAFABYAAAABAAMAAAAVABgAAAAEAAMAAAAGACEAAAAAAAMAAAAHACEAAAABAAMAAAAIACEAAAADAAMAAAAAADUAAAADAAEAAAAAADYAAAADAAEAAAAAADcAAAADAAEAAAAAADgAAAADAAEAAAAAADkAAAADAAEAAAAAADoAAAADAAEAAAAAADsAAAADAAEAAAAAADwAAAADAAEAAAAAAD0AAAADAAEAAAAAAD4AAAADAAEAAAAAAD8AAAADAAEAAAAAAEAAAAADAAEAAAAAAEEAAAADAAEAAAAAAEIAAAADAAEAAAAAAEMAAAADAAEAAAAAAEQAAAADAAEAAAAAAEUAAAADAAEAAAAAAEYAAAADAAEAAAAAAEcAAAADAAEAAAAAAEgAAAADAAEAAAAAAEkAAAADAAEAAAAAAEoAAAADAAEAAAAAAEsAAAADAAEAAAAAAEwAAAADAAEAAAAAAE0AAAADAAEAAAAAAE4AAAADAAEAAAAAAE8AAAADAAEAAAAAAFAAAAADAAEAAAAAAFEAAAADAAEAAAAAAFIAAAADAAEAAAAAAFMAAAADAAEAAAAAAFQAAAADAAEAAAAAAFUAAAADAAEAAAAAAFYAAAADAAEAAAAAAFcAAAADAAEAAAAAAFgAAAADAAEAAAAAAFkAAAADAAEAAAAAAFoAAAADAAEAAAAAAFsAAAADAAEAAAAAAFwAAAADAAEAAAAAAF0AAAADAAEAAAAAAF4AAAADAAEAAAAAAF8AAAADAAEAAAAOACgAAAAAAAMAAAAPACgAAAACAAMAAAAQACgAAAACAAMAAAAFADoAAAAEAAMAAAAVADEAAAAEAAMAAAAEAC0AAAAEAAMAAAAWAEEAAAAEAAMAAAAFAE4AAAAEAAMAAAAMAFQAAAAAAAMAAAANAFQAAAADAAMAAAAWAFkAAAAEAAMAAAAHAF4AAAAAAAMAAAAIAF4AAAADAAMAAAAOADcAAAAEAAMAAAAqAAAAAAAEAAEAAAAqAAEAAAAEAAEAAAAqAAIAAAAEAAEAAAAqAAMAAAAEAAEAAAAqAAQAAAAEAAEAAAAqAAUAAAAEAAEAAAAqAAYAAAAEAAEAAAAqAAcAAAAEAAEAAAAqAAgAAAAEAAEAAAAqAAkAAAAEAAEAAAAqAAoAAAAEAAEAAAAqAAsAAAAEAAEAAAAqAAwAAAAEAAEAAAAqAA0AAAAEAAIAAAAqABkAAAAAAAAAAAAqABoAAAAAAAEAAAAqABsAAAAAAAEAAAAqABwAAAAAAAEAAAAqAB0AAAAAAAEAAAAqAB4AAAAAAAEAAAAqAB8AAAAAAAEAAAAqACAAAAAAAAEAAAAqACEAAAAAAAEAAAAqACIAAAAAAAEAAAAqACMAAAAAAAEAAAAqACQAAAAAAAEAAAAqACUAAAAAAAEAAAAqACYAAAAAAAEAAAAqACcAAAAAAAEAAAAqACgAAAAAAAEAAAAqACkAAAAAAAEAAAAqACoAAAAAAAEAAAAqACsAAAAAAAEAAAAqACwAAAAAAAEAAAAqAC0AAAAAAAEAAAAqAC4AAAAAAAEAAAAqAC8AAAAAAAEAAAAqADAAAAAAAAEAAAAqADEAAAAAAAEAAAAqADIAAAAAAAEAAAAqADMAAAAAAAEAAAAAAP7/AAADAAEAAAAAAP3/AAADAAEAAAAAAPz/AAADAAEAAAAAAPv/AAADAAEAAAAAAPr/AAADAAEAAAAAAPn/AAADAAEAAAAAAPj/AAADAAEAAAAAAPf/AAADAAEAAAAAAPb/AAADAAEAAAAAAPX/AAADAAEAAAAqAP//AAAAAAEAAAAqAP7/AAAAAAEAAAAqAP3/AAAAAAEAAAAqAPz/AAAAAAEAAAAqAPv/AAAAAAEAAAAqAPr/AAAAAAEAAAAqAPn/AAAAAAEAAAAqAPj/AAAAAAEAAAAqAPf/AAAAAAEAAAAqAPb/AAAAAAEAAAAqAPX/AAAAAAEAAAAqAPT/AAAAAAEAAAARACgAAAADAAMAAAAMAEEAAAAEAAMAAAATAEsAAAAEAAMAAAAjAEsAAAAEAAMAAAArAD4AAAAEAAMAAAAvABsAAAAEAAMAAAA4ACIAAAAEAAMAAAAfAA4AAAAEAAMAAAAnABUAAAAEAAMAAAAcACQAAAAEAAMAAAAlACkAAAAEAAMAAAAjADcAAAAEAAMAAAAvAEkAAAAEAAMAAAAfAEMAAAAEAAMAAAAyAFUAAAAEAAMAAAAgAFUAAAAEAAMAAAAAAGAAAAAAAAQAAAAAAGEAAAAAAAUAAAAAAGIAAAAAAAUAAAA5ACMAAAAEAAUAAAA3ACMAAAAEAAUAAAA2ACQAAAAEAAUAAAA1ACUAAAAEAAUAAAA0ACYAAAAEAAUAAAAzACcAAAAEAAUAAAAyACgAAAAEAAUAAAArADMAAAAEAAUAAAAsADMAAAAEAAUAAAAtADMAAAAEAAUAAAArADoAAAAEAAUAAAAsADoAAAAEAAUAAAAtADoAAAAEAAUAAAAOAD4AAAAEAAUAAAAHAD4AAAAEAAUAAAAWAFMAAAAEAAUAAAAqAFwAAAAEAAUAAAAeAFoAAAAEAAUAAAABAGMAAAAEAAUAAAABAGYAAAAEAAUAAAABAGoAAAAEAAUAAAD+/20AAAAEAAUAAAD8/3EAAAAEAAUAAAD9/3UAAAAEAAUAAAAvAB4AAAAEAAUAAAAMAAIAAAAEAAUAAAAFAEIAAAAEAAUAAAAJAGUAAAAEAAQAAAAYAGsAAAAEAAQAAAAWAGQAAAAEAAQAAAANAHIAAAAEAAQAAAApAHIAAAAEAAQAAAAkAGsAAAAEAAQAAAA2AGoAAAAEAAQAAABVAGsAAAAEAAQAAABdAG4AAAAEAAQAAABGAHMAAAAEAAQAAAAtAGEAAAAEAAQAAAAZAHoAAAAEAAQAAAA7AH0AAAAEAAQAAAAsAIMAAAAEAAQAAAAlAIMAAAAEAAQAAAAgAIcAAAAEAAQAAAAVAIoAAAAEAAQAAAAPAIIAAAAEAAQAAAAIAIwAAAAEAAQAAAACAHIAAAAEAAQAAAD7/3UAAAAEAAQAAAD7/3wAAAAEAAQAAAD+/4UAAAAEAAQAAAD5/4sAAAAEAAQAAAD+/5MAAAAEAAQAAAAbAI0AAAAEAAQAAAAzAJEAAAAEAAQAAAApAIkAAAAEAAQAAAA7AIgAAAAEAAQAAAA0AIAAAAAEAAQAAABEAIwAAAAEAAQAAABDAIMAAAAEAAQAAAA+AJIAAAAEAAQAAABUAIkAAAAEAAQAAABVAJIAAAAEAAQAAABLAIgAAAAEAAQAAABVAH4AAAAEAAQAAABKAHwAAAAEAAQAAABYAHQAAAAEAAQAAAA4AHEAAAAEAAQAAAArAHkAAAAEAAQAAAAJAJ0AAQAAAAAAAAAhAJ4AAQAAAAAAAAA7AJ4AAQAAAAAAAABWAJ4AAQAAAAAAAABJAJ4AAQAAAAAAAABnAJsAAQAAAAAAAABaAJQAAAAEAAQAAABbAJQAAAAEAAUAAABgAJcAAAAEAAQAAABfAJcAAAAEAAUAAABhAJ4AAAAEAAUAAABkAKIAAQAAAAAAAAA=")
 tile_set = SubResource("TileSet_dewec")
+metadata/_edit_lock_ = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2127123756]
-visible = false
 
 [node name="shop" type="Button" parent="CanvasLayer" unique_id=85458325]
 anchors_preset = 1
@@ -160,6 +198,7 @@ patch_margin_left = 4
 patch_margin_top = 4
 patch_margin_right = 4
 patch_margin_bottom = 4
+metadata/_edit_lock_ = true
 
 [node name="depth" type="Label" parent="CanvasLayer/depth_holder" unique_id=1441842307]
 layout_mode = 1
@@ -187,6 +226,7 @@ patch_margin_left = 4
 patch_margin_top = 4
 patch_margin_right = 4
 patch_margin_bottom = 4
+metadata/_edit_lock_ = true
 
 [node name="points" type="Label" parent="CanvasLayer/points_holder" unique_id=456090220]
 layout_mode = 1
@@ -222,6 +262,7 @@ patch_margin_left = 4
 patch_margin_top = 4
 patch_margin_right = 4
 patch_margin_bottom = 4
+metadata/_edit_lock_ = true
 
 [node name="HighscoreNotif" type="Label" parent="CanvasLayer/Highscore" unique_id=255562773]
 layout_mode = 1
@@ -242,6 +283,7 @@ horizontal_alignment = 1
 metadata/_edit_lock_ = true
 
 [node name="ShopMenu" type="NinePatchRect" parent="CanvasLayer" unique_id=596175775]
+visible = false
 z_index = -19
 anchors_preset = 8
 anchor_left = 0.5
@@ -259,8 +301,9 @@ patch_margin_left = 4
 patch_margin_top = 4
 patch_margin_right = 4
 patch_margin_bottom = 4
+metadata/_edit_lock_ = true
 
-[node name="Button" type="Button" parent="CanvasLayer/ShopMenu" unique_id=1997155590]
+[node name="Upg1" type="Button" parent="CanvasLayer/ShopMenu" unique_id=1997155590]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.933
@@ -280,7 +323,7 @@ amt_to_change = 0.05
 initial_cost = 200
 cost_scaling = 2.0
 
-[node name="Label" type="Label" parent="CanvasLayer/ShopMenu/Button" unique_id=1424125252]
+[node name="Label" type="Label" parent="CanvasLayer/ShopMenu/Upg1" unique_id=1424125252]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -1.784
@@ -291,10 +334,11 @@ offset_left = -71.016
 offset_top = -11.5
 offset_right = 68.984
 offset_bottom = 15.5
+theme = ExtResource("10_bmxlf")
 text = "Cost:"
 horizontal_alignment = 2
 
-[node name="Upg1" type="RichTextLabel" parent="CanvasLayer/ShopMenu/Button" unique_id=1250853943]
+[node name="Upg1" type="RichTextLabel" parent="CanvasLayer/ShopMenu/Upg1" unique_id=1250853943]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -11.961
@@ -305,14 +349,118 @@ offset_left = 22.011047
 offset_top = -51.501007
 offset_right = 697.01154
 offset_bottom = 1.499012
-theme = SubResource("Theme_vy5pj")
+theme = ExtResource("10_bmxlf")
 theme_override_font_sizes/normal_font_size = 23
 theme_override_font_sizes/bold_font_size = 30
 bbcode_enabled = true
 text = "[b] Wealthmaxxing:[/b]  Increase the amount of points gained by 5% per upgrade using your wizard powers (or something)!"
 
+[node name="Upg2" type="Button" parent="CanvasLayer/ShopMenu" unique_id=1408038662]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.933
+anchor_top = 0.15300001
+anchor_right = 0.933
+anchor_bottom = 0.15300001
+offset_left = -50.564026
+offset_top = 158.05699
+offset_right = 0.43597412
+offset_bottom = 189.05699
+theme = ExtResource("4_v1gob")
+theme_override_font_sizes/font_size = 24
+text = "Buy"
+script = ExtResource("9_vy5pj")
+upgrade_number = 1
+stat_to_change = "fall_time"
+amt_to_change = 0.5
+initial_cost = 1000
+cost_scaling = 10.0
+
+[node name="Label" type="Label" parent="CanvasLayer/ShopMenu/Upg2" unique_id=580601227]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -1.784
+anchor_top = 0.5
+anchor_right = -1.784
+anchor_bottom = 0.5
+offset_left = -71.016
+offset_top = -11.5
+offset_right = 68.984
+offset_bottom = 15.5
+theme = ExtResource("10_bmxlf")
+text = "Cost:"
+horizontal_alignment = 2
+
+[node name="Upg1" type="RichTextLabel" parent="CanvasLayer/ShopMenu/Upg2" unique_id=734024999]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -11.961
+anchor_top = 0.37100002
+anchor_right = -11.961
+anchor_bottom = 0.37100002
+offset_left = 22.011047
+offset_top = -51.501007
+offset_right = 697.01154
+offset_bottom = 1.499012
+theme = ExtResource("10_bmxlf")
+theme_override_font_sizes/normal_font_size = 23
+theme_override_font_sizes/bold_font_size = 30
+bbcode_enabled = true
+text = "[b] Better Wi-fi :[/b]  Increase the amount of time you can fall without losing connection! (0.25 seconds per upgrade)"
+
+[node name="Upg3" type="Button" parent="CanvasLayer/ShopMenu" unique_id=782759364]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.933
+anchor_top = 0.15300001
+anchor_right = 0.933
+anchor_bottom = 0.15300001
+offset_left = -50.564026
+offset_top = 294.057
+offset_right = 0.43597412
+offset_bottom = 325.057
+theme = ExtResource("4_v1gob")
+theme_override_font_sizes/font_size = 24
+text = "Buy"
+script = ExtResource("11_frkhe")
+upgrade_number = 3
+cost = 1e+19
+
+[node name="Label" type="Label" parent="CanvasLayer/ShopMenu/Upg3" unique_id=556615778]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -1.784
+anchor_top = 0.5
+anchor_right = -1.784
+anchor_bottom = 0.5
+offset_left = -71.016
+offset_top = -11.5
+offset_right = 68.984
+offset_bottom = 15.5
+theme = ExtResource("10_bmxlf")
+text = "Cost:"
+horizontal_alignment = 2
+
+[node name="Upg1" type="RichTextLabel" parent="CanvasLayer/ShopMenu/Upg3" unique_id=1610311079]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -11.961
+anchor_top = 0.37100002
+anchor_right = -11.961
+anchor_bottom = 0.37100002
+offset_left = 22.011047
+offset_top = -51.501007
+offset_right = 697.01154
+offset_bottom = 1.499012
+theme = ExtResource("10_bmxlf")
+theme_override_font_sizes/normal_font_size = 23
+theme_override_font_sizes/bold_font_size = 30
+bbcode_enabled = true
+text = "[b] Noob vs Pro vs Hacker:[/b]  No spoiling what this one does :p"
+
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=807763858]
 modulate = Color(1, 1, 1, 0)
+top_level = true
 z_index = 20
 anchors_preset = 15
 anchor_right = 1.0
@@ -328,6 +476,120 @@ libraries/ = SubResource("AnimationLibrary_pbw6q")
 
 [node name="TallyTimer" type="Timer" parent="." unique_id=2096385093]
 wait_time = 0.1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=777315015]
+z_index = -69
+offset_left = -719.0
+offset_top = -192.0
+offset_right = 1894.0
+offset_bottom = 1547.0
+texture = ExtResource("11_4kpch")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+metadata/_edit_lock_ = true
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="." unique_id=949480017]
+z_index = -69
+offset_left = -731.0
+offset_top = 1537.0
+offset_right = 1894.0
+offset_bottom = 2431.0
+texture = ExtResource("12_grg3l")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+metadata/_edit_lock_ = true
+
+[node name="BouncePad" parent="." unique_id=73153562 instance=ExtResource("14_1p5hy")]
+position = Vector2(458, 141)
+metadata/_edit_lock_ = true
+
+[node name="BouncePad2" parent="." unique_id=1459488930 instance=ExtResource("14_1p5hy")]
+position = Vector2(638, 325)
+metadata/_edit_lock_ = true
+
+[node name="BouncePad3" parent="." unique_id=841511991 instance=ExtResource("14_1p5hy")]
+position = Vector2(904, 532)
+metadata/_edit_lock_ = true
+
+[node name="BouncePad4" parent="." unique_id=1166153388 instance=ExtResource("14_1p5hy")]
+position = Vector2(596, 640)
+metadata/_edit_lock_ = true
+
+[node name="BouncePad5" parent="." unique_id=130506006 instance=ExtResource("14_1p5hy")]
+position = Vector2(230, 870)
+metadata/_edit_lock_ = true
+
+[node name="BouncePad6" parent="." unique_id=1934057673 instance=ExtResource("14_1p5hy")]
+position = Vector2(604, 60)
+metadata/_edit_lock_ = true
+
+[node name="BouncePad7" parent="." unique_id=212066398 instance=ExtResource("14_1p5hy")]
+position = Vector2(570, 60)
+metadata/_edit_lock_ = true
+
+[node name="BouncePad8" parent="." unique_id=398926151 instance=ExtResource("14_1p5hy")]
+position = Vector2(196, 1020)
+metadata/_edit_lock_ = true
+
+[node name="BouncePad9" parent="." unique_id=1981076079 instance=ExtResource("14_1p5hy")]
+position = Vector2(100, 425)
+metadata/_edit_lock_ = true
+
+[node name="BouncePad10" parent="." unique_id=1086113859 instance=ExtResource("14_1p5hy")]
+position = Vector2(100, 334)
+metadata/_edit_lock_ = true
+
+[node name="BouncePad11" parent="." unique_id=1124178082 instance=ExtResource("14_1p5hy")]
+position = Vector2(1253, 1786)
+metadata/_edit_lock_ = true
+
+[node name="BouncePad12" parent="." unique_id=638149916 instance=ExtResource("14_1p5hy")]
+position = Vector2(523, 1345)
+metadata/_edit_lock_ = true
+
+[node name="BouncePad13" parent="." unique_id=2090044338 instance=ExtResource("14_1p5hy")]
+position = Vector2(393, 1700)
+metadata/_edit_lock_ = true
+
+[node name="BouncePad14" parent="." unique_id=1637420849 instance=ExtResource("14_1p5hy")]
+position = Vector2(761.46576, 1145.0979)
+
+[node name="BouncePad15" parent="." unique_id=300641761 instance=ExtResource("14_1p5hy")]
+position = Vector2(503.28394, 1057.8252)
+
+[node name="BouncePad16" parent="." unique_id=1554241261 instance=ExtResource("14_1p5hy")]
+position = Vector2(199, 1329)
+
+[node name="NinePatchRect3" type="NinePatchRect" parent="." unique_id=1133428510]
+z_index = -69
+offset_left = -731.0
+offset_top = 2431.0
+offset_right = 1894.0
+offset_bottom = 3325.0
+texture = ExtResource("16_erwvk")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="BouncePad17" parent="." unique_id=2024711855 instance=ExtResource("14_1p5hy")]
+position = Vector2(1453, 2354)
+
+[node name="BouncePad18" parent="." unique_id=1850166435 instance=ExtResource("14_1p5hy")]
+position = Vector2(1545, 2405)
+
+[node name="BouncePad19" parent="." unique_id=123703691 instance=ExtResource("14_1p5hy")]
+position = Vector2(1533, 2523)
+
+[node name="BouncePad20" parent="." unique_id=700004478 instance=ExtResource("14_1p5hy")]
+position = Vector2(953, 2520)
+
+[node name="BouncePad21" parent="." unique_id=2088070841 instance=ExtResource("14_1p5hy")]
+position = Vector2(1383, 2515)
 
 [connection signal="timeout" from="diver/fall_timer" to="." method="falling"]
 [connection signal="pressed" from="CanvasLayer/shop" to="CanvasLayer/shop" method="_on_pressed"]

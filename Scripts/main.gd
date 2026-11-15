@@ -7,15 +7,22 @@ const spawn = Vector2(132,24)
 @onready var points = $CanvasLayer/points_holder/points
 @onready var depth = $CanvasLayer/depth_holder/depth
 @onready var shop_button = $CanvasLayer/shop
+@onready var respawning = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if Global.stats[2] >= 1:
+		Global.bouncevision = true
+	diver.respawn()
 	pass # Replace with function body.
 func falling():
 	Global.fall_time += 0.1
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
+	if Global.bounce == true:
+		diver.velocity.y = -300
+		Global.bounce = false
 	Global.depth = int(diver.position.y - 23)/10
 	depth.text = "Depth: " + str(Global.depth)
 	points.text = "Points: " + str(Global.stats['points'])
@@ -24,7 +31,7 @@ func _process(_delta: float) -> void:
 	if diver.is_on_floor():
 		fall_timer.stop()
 		Global.fall_time = 0
-	if Global.fall_time >= Global.stats["freefall"]:
+	if Global.fall_time >= Global.stats["freefall"] and not respawning:
 		respawn()
 	if Global.moved:
 		shop_button.visible = false
@@ -32,10 +39,17 @@ func _process(_delta: float) -> void:
 	else:
 		shop_button.visible = true
 		$CanvasLayer/points_holder.visible = true
-	
+	if Global.attempts >= 2:
+		Global.points_mult = Global.stats['points_mult'] - 0.75
+	elif Global.attempts == 0 and Global.highscore:
+		Global.points_mult = Global.stats["points_mult"] + 1.5
+	else:
+		Global.points_mult = Global.stats['points_mult']
 func respawn():
+	Global._save()
 	diver.death()
-	await get_tree().create_timer(0.75).timeout
+	respawning = true
+	await get_tree().create_timer(0.2).timeout
 	$AnimationPlayer.play("Reset")
 	await get_tree().create_timer(1).timeout
 	$AnimationPlayer.play("fade out")
@@ -43,16 +57,17 @@ func respawn():
 	if Global.depth > Global.stats["highscore"]:
 		Global.stats["highscore"] = Global.depth
 		Global.highscore = true
-		Global.points_mult = Global.stats["points_mult"] + 1.5
+		Global.attempts = 0
 	else:
+		Global.attempts += 1
 		Global.highscore = false
-		Global.points_mult = Global.stats["points_mult"]
 	temp_points = Global.depth * max(Global.points_mult,0.01)
 	Global.moved = false
 	fall_timer.stop()
 	Global.fall_time = 0
 	diver.global_position = spawn
 	diver.respawn()
+	respawning = false
 	$TallyTimer.start(0.001)
 	
 func tally():
@@ -63,5 +78,6 @@ func tally():
 		Global.stats['points'] += 1
 		temp_points -= 1
 	else:
+		Global._save()
 		$TallyTimer.stop()
 		$CanvasLayer/Highscore.visible = false

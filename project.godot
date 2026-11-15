@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="DepthDiver"
-run/main_scene="uid://dntfu5477qide"
+run/main_scene="uid://cwpa1rw3coepd"
 config/features=PackedStringArray("4.8", "Forward Plus")
 config/icon="res://icon.svg"
 

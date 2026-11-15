@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://cwpa1rw3coepd"]
+
+[ext_resource type="Script" uid="uid://j07lps2qor04" path="res://Scripts/intro.gd" id="1_b226h"]
+[ext_resource type="Texture2D" uid="uid://5hknnnqr1oxf" path="res://Assets/Textures/Template.jpeg" id="2_alxvg"]
+[ext_resource type="FontFile" uid="uid://dy886rosnc5ux" path="res://Assets/Fonts/Stepalange-x3BLm.otf" id="3_geirw"]
+
+[node name="Intro" type="Control" unique_id=277728931]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_b226h")
+
+[node name="Control" type="ColorRect" parent="." unique_id=1166254568]
+layout_mode = 0
+offset_left = -908.0
+offset_top = -568.0
+offset_right = 1320.0
+offset_bottom = 805.0
+color = Color(0, 0, 0, 1)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=551420690]
+
+[node name="TextHolder" type="NinePatchRect" parent="." unique_id=380909260]
+layout_mode = 1
+offset_left = -289.0
+offset_top = -52.0
+offset_right = 281.0
+offset_bottom = 34.0
+texture = ExtResource("2_alxvg")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="Text" type="Label" parent="TextHolder" unique_id=231124357]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_geirw")
+theme_override_font_sizes/font_size = 25
+text = "HIGHSCORE!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="." unique_id=216919579]
+
+[node name="Finished" type="Timer" parent="." unique_id=352844849]
+
+[connection signal="timeout" from="Timer" to="." method="_diag_show"]
+[connection signal="timeout" from="Finished" to="." method="_on_finished_timeout"]

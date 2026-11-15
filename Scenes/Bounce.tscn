@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://c5kseifahwfe1"]
+
+[ext_resource type="Texture2D" uid="uid://byuvblypbvul0" path="res://icon.svg" id="1_edx0e"]
+[ext_resource type="Script" uid="uid://b30bnyvl08blb" path="res://Scenes/bounce.gd" id="1_t4oks"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t4oks"]
+size = Vector2(16, 16)
+
+[node name="BouncePad" type="Area2D" unique_id=73153562]
+collision_layer = 255
+collision_mask = 255
+script = ExtResource("1_t4oks")
+
+[node name="Area2D" type="CollisionShape2D" parent="." unique_id=763614825]
+shape = SubResource("RectangleShape2D_t4oks")
+debug_color = Color(0, 0.6, 0.69803923, 0)
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=855497481]
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+texture = ExtResource("1_edx0e")
+expand_mode = 1
+stretch_mode = 4
+
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="." to="." method="_on_body_shape_exited"]
