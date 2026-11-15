@@ -11,6 +11,7 @@ const spawn = Vector2(132,24)
 @onready var god = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	Global.fall_time = -0.5
 	if Global.stats[2] >= 1 or god:
 		Global.bouncevision = true
 	diver.respawn()

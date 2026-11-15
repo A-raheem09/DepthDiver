@@ -26,15 +26,6 @@ var stats = {
 func _ready() -> void:
 	pass # Replace with function body.
 
-func _save():
-	var file : FileAccess = FileAccess.open(FILE_PATH, FileAccess.WRITE)
-	file.store_var(stats)
-func _load():
-	if FileAccess.file_exists(FILE_PATH):
-		var file : FileAccess = FileAccess.open(FILE_PATH, FileAccess.READ)
-		var data = file.get_var()
-		for i in data:
-			stats[i] = data[i]
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass

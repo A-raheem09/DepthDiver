@@ -6,6 +6,7 @@ func _ready() -> void:
 	connect("pressed",on_pressed)
 	if Global.stats[upgrade_number] > 0:
 		disabled = true
+		$Label.text = "Cost: " + str(cost)
 	else:
 		disabled = false
 	pass # Replace with function body.

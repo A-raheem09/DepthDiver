@@ -14,11 +14,11 @@
 [ext_resource type="Texture2D" uid="uid://jcvp5hxvtqdp" path="res://Assets/Textures/TemplatePressed.jpeg" id="8_50glp"]
 [ext_resource type="Script" uid="uid://rux4x00p0yg2" path="res://Scripts/upgradebutton.gd" id="9_vy5pj"]
 [ext_resource type="Theme" uid="uid://s2as1w006s04" path="res://UI/Labels.tres" id="10_bmxlf"]
-[ext_resource type="Texture2D" uid="uid://bpvbyl83l4rul" path="res://Assets/Textures/BGT1.png" id="11_4kpch"]
 [ext_resource type="Script" uid="uid://fl4dpe7wmn3a" path="res://Scripts/upg_3.gd" id="11_frkhe"]
 [ext_resource type="Texture2D" uid="uid://twtey3d8dits" path="res://Assets/Textures/BG2T1.png" id="12_grg3l"]
 [ext_resource type="PackedScene" uid="uid://c5kseifahwfe1" path="res://Scenes/Bounce.tscn" id="14_1p5hy"]
 [ext_resource type="Texture2D" uid="uid://b5s5gft7fd4qo" path="res://Assets/Textures/T2BG1.png" id="16_erwvk"]
+[ext_resource type="Texture2D" uid="uid://dj73ctfdw6rbs" path="res://Assets/Textures/NightSky.png" id="16_sxkr1"]
 [ext_resource type="Texture2D" uid="uid://cl24xn5qjfb41" path="res://Assets/Textures/T2BG2.png" id="20_sxkr1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kln2b"]
@@ -367,6 +367,7 @@ text = "Points:"
 metadata/_edit_lock_ = true
 
 [node name="Highscore" type="NinePatchRect" parent="CanvasLayer" unique_id=245434234]
+visible = false
 z_index = -141
 anchors_preset = 5
 anchor_left = 0.5
@@ -544,7 +545,7 @@ theme_override_font_sizes/font_size = 24
 text = "Buy"
 script = ExtResource("11_frkhe")
 upgrade_number = 3
-cost = 1e+19
+cost = 100000000.0
 
 [node name="Label" type="Label" parent="CanvasLayer/ShopMenu/Upg3" unique_id=556615778]
 layout_mode = 1
@@ -553,7 +554,7 @@ anchor_left = -1.784
 anchor_top = 0.5
 anchor_right = -1.784
 anchor_bottom = 0.5
-offset_left = -71.016
+offset_left = -492.016
 offset_top = -11.5
 offset_right = 68.984
 offset_bottom = 15.5
@@ -617,7 +618,7 @@ offset_left = -719.0
 offset_top = -192.0
 offset_right = 1894.0
 offset_bottom = 1547.0
-texture = ExtResource("11_4kpch")
+texture = ExtResource("16_sxkr1")
 patch_margin_left = 6
 patch_margin_top = 6
 patch_margin_right = 6
